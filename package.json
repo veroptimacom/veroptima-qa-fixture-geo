@@ -1,0 +1,28 @@
+{
+  "name": "veroptima-qa-fixture-geo",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "description": "Geospatial fixture pack for qa-expert. Implements @qa-expert/fixture-pack-contract v0.1.0. Provides kml, wkt, geojson, and shapefile-zip generators of the same parametric polygon (clean vs overlap with a seeded quilombo reference).",
+  "license": "MIT",
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "bun x tsc --noEmit"
+  },
+  "dependencies": {
+    "@qa-expert/fixture-pack-contract": "^0.1.0",
+    "zod": "^4.4.3",
+    "jszip": "^3.10.1"
+  },
+  "overrides": {
+    "@qa-expert/fixture-pack-contract": "file:../../qa-expert-agent-first-try/packages/contracts/fixture-pack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ricardo-hdrn/veroptima-qa-fixture-geo"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.14",
+    "bun-types": "^1.3.14"
+  }
+}

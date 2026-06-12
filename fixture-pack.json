@@ -1,0 +1,43 @@
+{
+  "name": "@qa-expert/veroptima-qa-fixture-geo",
+  "version": "0.1.0",
+  "family": "fixture-pack",
+  "domain": "geo",
+  "contractVersion": "0.1.0",
+  "entry": "./src/index.ts",
+  "locales": [],
+  "kinds": [
+    {
+      "name": "kml",
+      "outputs": "string",
+      "params": {
+        "maxHa": "number (upper bound on parcel area in hectares; default 100)",
+        "region": "\"clean\" | \"overlap\" — clean stays away from the seeded quilombo reference polygon; overlap is positioned so its bbox intersects it"
+      }
+    },
+    {
+      "name": "wkt",
+      "outputs": "string",
+      "params": {
+        "maxHa": "number",
+        "region": "\"clean\" | \"overlap\""
+      }
+    },
+    {
+      "name": "geojson",
+      "outputs": "string",
+      "params": {
+        "maxHa": "number",
+        "region": "\"clean\" | \"overlap\""
+      }
+    },
+    {
+      "name": "shapefile-zip",
+      "outputs": "file",
+      "params": {
+        "maxHa": "number",
+        "region": "\"clean\" | \"overlap\""
+      }
+    }
+  ]
+}
