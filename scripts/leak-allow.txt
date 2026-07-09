@@ -1,0 +1,9 @@
+# leak-scan ALLOWLIST — a matched line matching any of these (obvious placeholders) is NOT a leak.
+# Keep placeholders OBVIOUSLY fake so a real secret can never hide behind an allow entry.
+glpat-(EXAMPLE|FAKE|REDACTED|SECRET-TOKEN-VALUE|xxx|\.\.\.)
+glpat-…
+AKIAEXAMPLE|AKIAIOSFODNN7EXAMPLE
+example-(org|tenant|client|project|secret)
+reports\.example\.com
+REPLACE_ME|CHANGEME|<[a-z-]+>|your-token-here
+BEGIN [A-Z ]*PRIVATE KEY-----\.\.\.

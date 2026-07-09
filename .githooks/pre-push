@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Fast local leak catch before a push leaves the machine. Enable once per clone:
+#   git config core.hooksPath .githooks
+# CI re-runs the same scan as the authoritative gate (a local --no-verify bypass can't dodge CI).
+exec bash "$(git rev-parse --show-toplevel)/scripts/leak-scan.sh"

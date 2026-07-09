@@ -1,0 +1,22 @@
+name: leak-scan
+# Authoritative, unbypassable gate: blocks a push/PR that leaks a secret, internal-infra ref, or a
+# client identifier. The generic patterns live in the repo; the private client-name denylist is injected
+# from the org/repo secret LEAK_CLIENT_DENYLIST (never committed). Make this a REQUIRED status check.
+on:
+  push:
+    branches: ['**']
+  pull_request:
+jobs:
+  leak-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: leak-scan
+        env:
+          # Set this org/repo secret to a comma-separated regex list of client/tenant names + internal
+          # hosts (e.g. "acme-corp,tenant-x,[a-z.-]+\.platform\.example\.com,REG-[0-9]{7}"). Kept OUT of
+          # the repo so the config itself never names a client.
+          LEAK_CLIENT_DENYLIST: ${{ secrets.LEAK_CLIENT_DENYLIST }}
+        run: bash scripts/leak-scan.sh

@@ -1,0 +1,19 @@
+# leak-scan GENERIC patterns — committable in ANY repo (public included): only secret/infra SHAPES,
+# NEVER a client or org name. Client names go in the PRIVATE denylist (LEAK_CLIENT_DENYLIST / .leak-clientnames).
+# One extended-regex per line; blank lines and #comments ignored.
+
+# ── secrets / tokens ──
+glpat-[A-Za-z0-9_-]{20,}
+ghp_[A-Za-z0-9]{36}
+gho_[A-Za-z0-9]{36}
+github_pat_[A-Za-z0-9_]{40,}
+AKIA[0-9A-Z]{16}
+ASIA[0-9A-Z]{16}
+dp\.st\.[A-Za-z0-9_-]+\.[A-Za-z0-9]{20,}
+xox[baprs]-[A-Za-z0-9-]{10,}
+-----BEGIN [A-Z ]*PRIVATE KEY-----
+eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}
+
+# ── cloud infra identifiers ──
+arn:aws:[a-z0-9-]+:[a-z0-9-]*:[0-9]{12}:
+AIza[A-Za-z0-9_-]{35}
